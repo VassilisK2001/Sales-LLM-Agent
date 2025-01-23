@@ -1,6 +1,12 @@
 import pypandoc 
-from config import constants 
 from openai import OpenAI 
+import sys 
+import os 
+
+# Add the parent directory of 'config' to sys.path
+sys.path.append(os.path.abspath(os.path.join('..')))
+
+from config import constants 
 
 class DocumentGenerator:
     def __init__(self):

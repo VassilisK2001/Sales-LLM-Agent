@@ -1,7 +1,14 @@
 from langchain.tools import BaseTool
-from config import constants
 import requests
 import json 
+import sys
+import os
+
+# Add the parent directory of 'config' to sys.path
+sys.path.append(os.path.abspath(os.path.join('..')))
+
+from config import constants
+
 class GetPlatformInfo(BaseTool):
     name = "Platform Info extractor"
     description = "use this tool when you have given a description about meeting and you have to find the proposed idea, client name, or platform link from the given description"
