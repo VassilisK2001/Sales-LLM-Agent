@@ -3,10 +3,6 @@ import requests
 import json 
 import sys
 import os
-
-# Add the parent directory of 'config' to sys.path
-sys.path.append(os.path.abspath(os.path.join('..')))
-
 from config import constants
 
 class GetPlatformInfo(BaseTool):
