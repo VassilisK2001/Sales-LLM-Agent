@@ -1,3 +1,5 @@
 .env
-constants.py
-__pycache__/
+config/
+*.egg-info/
+agentenv/
+
