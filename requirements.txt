@@ -56,6 +56,7 @@ pydantic-settings==2.7.1
 pydantic_core==2.27.2
 Pygments==2.19.1
 pypandoc==1.15
+pypandoc_binary==1.15
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pywin32==308

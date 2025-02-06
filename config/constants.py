@@ -1,0 +1,5 @@
+import os
+
+OPENAI_API_KEY= os.getenv('OPENAI_API_KEY')
+SERPAPI_API_KEY= os.getenv('SERPAPI_API_KEY')
+PERPLEXITY_API_KEY= os.getenv('PERPLEXITY_API_KEY')

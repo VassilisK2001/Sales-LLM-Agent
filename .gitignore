@@ -1,8 +1,5 @@
 .env
 
-# Ignore config file
-config/
-
 # Ignore virtual environment
 agentenv/
 
