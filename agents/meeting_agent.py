@@ -1,19 +1,50 @@
-import json 
 from langchain.agents import initialize_agent
+from langchain_openai import ChatOpenAI
+from langchain.chains.conversation.memory import ConversationBufferMemory 
+from agent_tools.agent_utilities import GetPlatformInfo, GetClientDetails, GetIdeaSolution
+from config import constants
 
 class MeetingAgent:
-    def __init__(self, tools, llm, conversational_memory):
+    def __init__(self):
+        self.tools = [GetClientDetails(), GetPlatformInfo(), GetIdeaSolution()]
+        self.llm =  ChatOpenAI(
+            model="gpt-4o",
+            temperature=0.6,
+            api_key= constants.OPENAI_API_KEY
+        ) 
+        self.conversational_memory = ConversationBufferMemory(
+            memory_key='chat_history',
+            k=5,
+            return_messages = True
+        ) 
         self.agent = initialize_agent(
-            tools = tools,
-            llm = llm, 
+            tools = self.tools,
+            llm = self.llm, 
             agent = "zero-shot-react-description",
             verbose= True, 
             max_iterations = 3,
             early_stopping_method = "generate", 
-            memory = conversational_memory,
+            memory = self.conversational_memory,
             handle_parsing_errors = True
         )
     def process_request(self, description):
-        para = self.agent(description) 
-        output = json.loads(para["output"]) 
+        output = self.agent.run(
+            "First find the idea, client name and platform link using Platform info extractor tool and find 150 words information about proposed idea about product, goals and achievements of CEO. Once you got the information about their idea then find how we can help them to build it in 200 words "
+            "fetch realtime data from internet everytime."
+            "This information is going to be added in project proposal so please write in detail and sections like CEO_Info,idea and solution must be explained in 600 words each. "
+            "Return your response in structured JSON format like below and please use proper line breaks: "
+            """
+            {
+            "platform_name": <platform_name>,
+            "CEO_Info": <ceo_info>,
+            "CEO_Name": <ceo_name>,
+            "idea": <idea>,
+            "solution": <solution>,
+            "tech_stack": <tech stack>,
+            "timeline": <timeline>,
+            "Platform_link": <platform_link>
+            }
+            """
+            f"Here is the description: {description}" 
+        )   
         return output 
