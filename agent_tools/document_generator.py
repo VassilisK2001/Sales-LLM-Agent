@@ -43,9 +43,7 @@ class DocumentGenerator:
         markdown_content = chat_completion.choices[0].message.content 
 
         # Covert markdown to Word document 
-        output_path = "output/output.docx"
         pypandoc.convert_text(markdown_content, "docx", format="md", outputfile="output.docx")
-        return output_path
        
  
 
