@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash, send_file 
+from flask import render_template, request, redirect, url_for, flash, send_from_directory 
 from utils.validate_input import process_description
 from agents.meeting_agent import MeetingAgent 
 from agent_tools.document_generator import DocumentGenerator 
@@ -6,13 +6,8 @@ import os
 
 def configure_routes(app):
     agent = MeetingAgent() 
+    document_generator = DocumentGenerator()
 
-    def save_document(content, filename='project_proposal.docx'):
-        file_path = os.path.join('generated_docs', filename)
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(content)
-        return file_path
-    
     @app.route("/")
     def index():
         return render_template("index.html")
@@ -31,11 +26,11 @@ def configure_routes(app):
                 return redirect(url_for('index'))
             
             agent_output = agent.process_request(description)
-            document_generator = DocumentGenerator()
-            document_content = document_generator.generate_document(agent_output)
-            file_path = save_document(document_content)
+            file_path = document_generator.generate_document(agent_output)
 
-            return render_template('result.html', file_path=file_path)
+            # Extract just the filename (without the path) to pass to result.html
+            filename = file_path.split(os.path.sep)[-1]
+            return render_template('result.html', filename=filename)
         
         except Exception as e:
             flash(f"Error processing request: {str(e)}", "error")
@@ -43,8 +38,11 @@ def configure_routes(app):
     
     @app.route('/download/<filename>')
     def download(filename):
-        file_path = os.path.join('generated_docs', filename)
-        return send_file(file_path, as_attachment=True)
+        # Define the path to the directory where the generated docs are stored
+        docs_directory = os.path.join(app.root_path, 'generated_docs')
+
+        # Return the file using send_from_directory
+        return send_from_directory(docs_directory, filename, as_attachment=True)
 
 
 

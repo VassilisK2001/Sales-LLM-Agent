@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form submission validation and loader activation
     form.addEventListener("submit", function (event) {
-        const descriptionInput = document.getElementById("description").ariaValueMax.trim();
+        const descriptionInput = document.getElementById("description").value.trim();
 
         if (descriptionInput === "") {
             event.preventDefault();

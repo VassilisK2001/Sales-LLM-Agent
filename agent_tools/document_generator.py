@@ -1,4 +1,5 @@
 import pypandoc 
+import os
 from openai import OpenAI 
 from config import constants
 
@@ -42,8 +43,7 @@ class DocumentGenerator:
         )
         markdown_content = chat_completion.choices[0].message.content 
 
+        file_path = os.path.join("app", "generated_docs", "project_proposal.docx")
         # Covert markdown to Word document 
-        pypandoc.convert_text(markdown_content, "docx", format="md", outputfile="output.docx")
-       
- 
-
+        pypandoc.convert_text(markdown_content, "docx", format="md", outputfile=file_path)
+        return file_path
