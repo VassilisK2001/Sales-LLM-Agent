@@ -19,7 +19,7 @@ class DocumentGenerator:
             # How can we help? 
             detailed information about solution 
             # Tech stack 
-            information about tech stack 
+            information about tech stack. Organize it in bullet points. 
             # Timeline 
             information about timeline 
             Try to add more information by yourself too to make it more detailed and make it around 800 words. Don't return anything except markdown and use proper line breaks.
@@ -30,7 +30,7 @@ class DocumentGenerator:
             idea: project idea 
             solution: solution on how we can solve the given problem statement and how to achive the given idea 
             tech_stack: tech stack used to build the solution 
-            timeline: timeline for the project 
+            timeline: timeline for the project. Oraganize this section strictly in bullet points. 
             Platform_link: link to the platform
             Here is the data:
             {agent_output}  

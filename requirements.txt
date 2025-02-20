@@ -40,10 +40,14 @@ langchain-community==0.3.14
 langchain-core==0.3.29
 langchain-openai==0.3.0
 langchain-text-splitters==0.3.5
+langgraph==0.2.74
+langgraph-checkpoint==2.0.16
+langgraph-sdk==0.1.53
 langsmith==0.2.10
 MarkupSafe==3.0.2
 marshmallow==3.25.1
 matplotlib-inline==0.1.7
+msgpack==1.1.0
 multidict==6.1.0
 mypy-extensions==1.0.0
 nest-asyncio==1.6.0

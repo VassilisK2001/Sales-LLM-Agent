@@ -23,6 +23,7 @@ class GetPlatformInfo(BaseTool):
                         "  'Platform Link': <platform_link>"
                         "}"
                         "Please make sure the response has proper line breaks, no extra spaces, unexpected characters (like \\n, extra quotes), or non-escaped characters."
+                        "Try to make it as brief as possible"
                     ),
                 },
                 {
@@ -71,10 +72,10 @@ class GetClientDetails(BaseTool):
                 {
                     "role": "user",
                     "content": (
-                        "I am giving you platform name,idea or platform link and you have to find latest information about" 
-                        "the platform by going to given link and return atleast 200 words description about idea and"
-                        "atleast 150 words description about CEO, their goal and achievements"
-                        "Please try to make it as detailed as you can and always refer to online information"
+                        "I am giving you platform name,idea or platform link and you have to find latest information about " 
+                        "the platform by going to given link and return  description about idea and "
+                        "description about CEO, their goal and achievements. "
+                        "Please try to make it as brief as possible and always refer to online information"
                         "here is the platform link or name "
                         f"{str(website)}"
                     )
@@ -93,6 +94,7 @@ class GetClientDetails(BaseTool):
         raise NotImplementedError("This tool does not support async")
 
 
+
 class GetIdeaSolution(BaseTool):
     name: str = "Solution extractor"
     description: str = "use this tool when you have given an idea description and information about client and you have to find solution on how we can achieve the given idea"
@@ -107,7 +109,7 @@ class GetIdeaSolution(BaseTool):
                     "content": (
                         "You have given an idea description and you have to find a solution to achieve the given idea using AI-ML"
                         "or webdev technologies. Search online about tech stack, resources, timeline of project and youtube videos and send it with proper formatting strictly in the following structured JSON format with proper line breaks, no extra spaces, unexpected characters (e.g., \\n, extra quotes, unescaped characters), and proper escaping. "
-                        "Ensure the response has the following format: "
+                        "Ensure the response is as brief as possible and has the following format: "
                         "{"
                         "  'Solution': <solution>,"
                         "  'Tech Stack': <tech_stack>,"
@@ -131,6 +133,6 @@ class GetIdeaSolution(BaseTool):
         }
         response = requests.post(url, json=payload, headers=headers).json()
         return response["choices"][0]["message"]["content"]
-    
+
     def _arun(self, website):
         raise NotImplementedError("This tool does not support async")

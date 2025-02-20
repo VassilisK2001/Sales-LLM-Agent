@@ -29,9 +29,9 @@ class MeetingAgent:
         )
     def process_request(self, description):
         output = self.agent.run(
-            "First find the idea, client name and platform link using Platform info extractor tool and find 150 words information about proposed idea about product, goals and achievements of CEO. Once you got the information about their idea then find how we can help them to build it in 200 words "
+            "First find the idea, client name and platform link using Platform info extractor tool and find information about proposed idea about product, goals and achievements of CEO. Once you got the information about their idea then find how we can help them to build it and "
             "fetch realtime data from internet everytime."
-            "This information is going to be added in project proposal so please write in detail and sections like CEO_Info,idea and solution must be explained in 600 words each. "
+            "This information is going to be added in project proposal so please write sections like CEO_Info,idea and solution. "
             "Return your response in structured JSON format like below and please use proper line breaks: "
             """
             {
@@ -45,6 +45,7 @@ class MeetingAgent:
             "Platform_link": <platform_link>
             }
             """
-            f"Here is the description: {description}" 
+            "Here is the description: "
+            f"{description}" 
         )   
         return output 
