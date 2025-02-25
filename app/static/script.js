@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
          // Show loader and disable button while processing
-         loader.style.display = "block";
+         loader.style.display = "flex";
          submitButton.disabled = true;
          submitButton.textContent = "Processing...";
     });

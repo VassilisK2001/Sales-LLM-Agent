@@ -31,7 +31,7 @@ class MeetingAgent:
         output = self.agent.run(
             "First find the idea, client name and platform link using Platform info extractor tool and find information about proposed idea about product, goals and achievements of CEO. Once you got the information about their idea then find how we can help them to build it and "
             "fetch realtime data from internet everytime."
-            "This information is going to be added in project proposal so please write sections like CEO_Info,idea and solution. "
+            "This information is going to be added in project proposal so please write detailed sections like CEO_Info,idea and solution. "
             "Return your response in structured JSON format like below and please use proper line breaks: "
             """
             {

@@ -1,10 +1,16 @@
 from flask import render_template, request, redirect, url_for, flash, send_from_directory 
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from utils.validate_input import process_description
 from agents.meeting_agent import MeetingAgent 
 from agent_tools.document_generator import DocumentGenerator 
 import os 
 
 def configure_routes(app):
+
+    # Initialize the Limiter object
+    limiter = Limiter(get_remote_address, app=app)
+
     agent = MeetingAgent() 
     document_generator = DocumentGenerator()
 
@@ -13,6 +19,7 @@ def configure_routes(app):
         return render_template("index.html")
     
     @app.route("/submit", methods=["POST"])
+    @limiter.limit("5 per day") # Limit the number of requests to 5 per day
     def submit():
         description = request.form.get("description")
         if not description:
@@ -43,6 +50,14 @@ def configure_routes(app):
 
         # Return the file using send_from_directory
         return send_from_directory(docs_directory, filename, as_attachment=True)
+    
+    # Custom rate limit exceeded handler
+    @app.errorhandler(429)
+    def ratelimit_handler(e):
+        flash("Rate limit exceeded. Please try again tomorrow.", "error")
+        return redirect(url_for("index"))
+
+        
 
 
 
