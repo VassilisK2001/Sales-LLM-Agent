@@ -29,7 +29,7 @@ def configure_routes(app):
         try:
             validation_result = process_description(description)
             if not validation_result['valid']:
-                flash('invalid description. Please include both idea and client information.', 'error')
+                flash('Invalid description. Please include both idea and client information.', 'error')
                 return redirect(url_for('index'))
             
             agent_output = agent.process_request(description)
@@ -40,7 +40,7 @@ def configure_routes(app):
             return render_template('result.html', filename=filename)
         
         except Exception as e:
-            flash(f"Error processing request: {str(e)}", "error")
+            flash(f"Error processing request. Please try again.", "error")
             return redirect(url_for("index"))
     
     @app.route('/download/<filename>')
