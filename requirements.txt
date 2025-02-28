@@ -76,7 +76,6 @@ pypandoc==1.15
 pypandoc_binary==1.15
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
-pywin32==308
 PyYAML==6.0.2
 pyzmq==26.2.0
 regex==2024.11.6
