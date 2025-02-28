@@ -22,6 +22,7 @@ Flask-Limiter==3.10.1
 frozenlist==1.5.0
 google-search-results==2.4.2
 greenlet==3.1.1
+gunicorn==23.0.0
 h11==0.14.0
 httpcore==1.0.7
 httpx==0.28.1
@@ -75,6 +76,7 @@ pypandoc==1.15
 pypandoc_binary==1.15
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
+pywin32==308
 PyYAML==6.0.2
 pyzmq==26.2.0
 regex==2024.11.6
