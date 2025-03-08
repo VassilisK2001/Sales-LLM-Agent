@@ -2,11 +2,14 @@
 
 This app automates and enhances the meeting workflow by using AI-powered agents to streamline the process of creating project proposals, preparing meeting materials, and summarizing discussions. By leveraging the capabilities of OpenAI and Perplexity APIs, the app gathers relevant information, structures it into well-organized documents, and provides actionable insights. Built with Python and Flask, the app is designed for ease of deployment using Docker and AWS Elastic Beanstalk. CI/CD pipelines have been set up using AWS CodePipeline to enable seamless deployment and updates.
 
+The app could be highly beneficial for software agencies, helping them generate well-structured project proposals for clients. By automating the information-gathering and proposal-writing process, agencies can save time and ensure consistency and quality in their client communications.
+
 The app is available online at: [http://salesllm-beanstalk-gh-app-env.eba-qcmdky2s.eu-central-1.elasticbeanstalk.com](http://salesllm-beanstalk-gh-app-env.eba-qcmdky2s.eu-central-1.elasticbeanstalk.com)
 
 ### Potential Use Cases:
 - **Project Proposal Creation:** Automatically generate well-structured project proposals based on input requirements.
-- **Meeting Preparation:** Gather and summarize key information to prepare for productive discussions.
+- **Software Agencies:** Streamline the process of preparing client proposals and project plans.
+- **Meeting Preparation:** Gather and summarize key information about client to prepare for productive discussions.
 - **Follow-up Documentation:** Capture meeting highlights and action points, ensuring no detail is overlooked.
 - **Research and Analysis:** Summarize research data and create comprehensive reports with minimal manual effort.
 
@@ -21,9 +24,16 @@ The app is available online at: [http://salesllm-beanstalk-gh-app-env.eba-qcmdky
 - Python
 - Flask
 - Langchain
+- OpenAI API
+- Perplexity API
 - Docker
 - AWS Elastic Beanstalk
 - AWS CodePipeline
+
+## AI Agent Tools
+1. **Platform Info Extractor:** Finds the idea, client name, and platform link from the given meeting description.
+2. **Client Details Extractor:** Searches on the internet to get more information about the client, idea, and platform.
+3. **Solution Extractor:** Takes the idea and searches online for possible solutions.
 
 ## Project Structure
 ```
