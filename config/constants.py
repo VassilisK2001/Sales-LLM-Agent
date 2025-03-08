@@ -1,9 +1,6 @@
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-
-OPENAI_API_KEY= os.getenv('OPENAI_API_KEY')
-SERPAPI_API_KEY= os.getenv('SERPAPI_API_KEY')
-PERPLEXITY_API_KEY= os.getenv('PERPLEXITY_API_KEY')
-FLASK_SECRET_KEY= os.getenv('FLASK_SECRET_KEY')
+OPENAI_API_KEY= os.environ['OPENAI_API_KEY']
+SERPAPI_API_KEY= os.environ['SERPAPI_API_KEY']
+PERPLEXITY_API_KEY= os.environ['PERPLEXITY_API_KEY']
+FLASK_SECRET_KEY= os.environ['FLASK_SECRET_KEY']
