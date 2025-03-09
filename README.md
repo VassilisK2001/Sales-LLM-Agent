@@ -73,6 +73,7 @@ source venv/bin/activate
 OPENAI_API_KEY=your-openai-api-key
 PERPLEXITY_API_KEY=your-perplexity-api-key
 FLASK_SECRET_KEY=your-flask-secret-key
+SERPAPI_API_KEY=your-serp-api-key
 ```
 
 5. Install the dependencies:
