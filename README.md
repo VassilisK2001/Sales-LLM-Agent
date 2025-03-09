@@ -55,21 +55,43 @@ project-root
 git clone https://github.com/your-repo.git
 cd your-repo
 ```
-2. Create a `.env` file and add your environment variables:
+2.  Create a virtual environment:
+```bash
+python -m venv venv
+```
+3. Activate the virtual environment:
+- On Windows:
+```bash
+venv\Scripts\activate
+```
+- On macOS/Linux:
+```bash
+source venv/bin/activate
+```
+4. Create a `.env` file and add your environment variables:
 ```env
 OPENAI_API_KEY=your-openai-api-key
 PERPLEXITY_API_KEY=your-perplexity-api-key
 FLASK_SECRET_KEY=your-flask-secret-key
 ```
-3. Build the Docker image:
+
+5. Install the dependencies:
+```bash
+pip install -r requirements.txt
+``` 
+6. Install the project as a local package:
+```bash
+pip install -e .
+```
+7. Build the Docker image:
 ```bash
 docker build -t meeting-ai-agent .
 ```
-4. Run the Docker container:
+8. Run the Docker container:
 ```bash
 docker run -dp 127.0.0.1:5000:5000 --env-file .env meeting-ai-agent
 ```
-5. Access the app at [http://127.0.0.1:5000](http://127.0.0.1:5000).
+9. Access the app at [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
 ## Deploying the App on AWS Elastic Beanstalk
 For detailed instructions on deploying a Dockerized app to AWS Elastic Beanstalk, refer to the official AWS documentation: [Deploying Docker Containers on Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/docker-quickstart.html).
@@ -79,6 +101,7 @@ For detailed instructions on deploying a Dockerized app to AWS Elastic Beanstalk
 |---------------------|-------------------------|
 | `OPENAI_API_KEY`     | API key for OpenAI       |
 | `PERPLEXITY_API_KEY` | API key for Perplexity   |
+| `SERPAPI_API_KEY` | API key for testing langchain agents in jupyter notebook with Serpapi tool |
 | `FLASK_SECRET_KEY`   | Secret key for Flask sessions |
 
 ## API Keys and Configuration
